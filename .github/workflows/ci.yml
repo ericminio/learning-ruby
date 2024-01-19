@@ -16,4 +16,4 @@ jobs:
       - name: build
         run: docker build -t learning-ruby .
       - name: tests
-        run: docker run -it --name learning-ruby --rm learning-ruby ruby ruby-ready.rb
+        run: docker run --rm learning-ruby ruby ruby-ready.rb
