@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: run tests
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: docker build -t learning-ruby .
+      - name: tests
+        run: docker run -it --name learning-ruby --rm learning-ruby ruby ruby-ready.rb
