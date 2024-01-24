@@ -16,4 +16,4 @@ jobs:
       - name: build
         run: docker build -t learning-ruby -f ./.github/workflows/Dockerfile .
       - name: tests
-        run: docker run --rm learning-ruby tests.sh
+        run: docker run --rm learning-ruby bash tests.sh
