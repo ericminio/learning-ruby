@@ -1,6 +1,7 @@
 #!/bin/bash
 
-for file in $(find about -name "*.rb"); do
+files=$(find about -name "*.rb")
+for file in ${files[@]}; do
     ruby "$file"
     if (( $? != 0 )); then
         exit 1
