@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v2
       - name: build
         run: |
-          cd ./.github/workflows/Dockerfile
+          cd ./.github/workflows
           docker-compose build ruby
       - name: tests
         run: |
-          cd ./.github/workflows/Dockerfile
+          cd ./.github/workflows
           docker-compose run --rm ruby ./tests.sh
