@@ -11,5 +11,13 @@ class ParametersTest < Test::Unit::TestCase
     assert_equal(go, "sleep")
   end
 
+  def test_nil_does_not_trigger_default_value
+    def go(action = "sleep")
+      action
+    end
+
+    assert_equal(go(nil), nil)
+  end
+
   
 end
