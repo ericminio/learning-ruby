@@ -1,0 +1,10 @@
+version: "3.4"
+
+services:
+  ruby:
+    build: .
+    image: ruby:3.3.0
+    container_name: ruby-3
+    volumes:
+      - ../../about:/usr/src/ruby/about
+      - ../../tests.sh:/usr/src/ruby/tests.sh

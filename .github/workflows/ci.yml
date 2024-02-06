@@ -14,6 +14,10 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
       - name: build
-        run: docker build -t learning-ruby -f ./.github/workflows/Dockerfile .
+        run: |
+          cd ./.github/workflows/Dockerfile
+          docker-compose build ruby
       - name: tests
-        run: docker run --rm learning-ruby bash tests.sh
+        run: |
+          cd ./.github/workflows/Dockerfile
+          docker-compose run --rm ruby ./tests.sh
