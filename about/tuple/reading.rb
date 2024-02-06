@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class DestructuringTest < Test::Unit::TestCase
+class ReadingTest < Test::Unit::TestCase
 
   def test_reading_via_index
     a = 1, 2
