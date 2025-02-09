@@ -16,8 +16,8 @@ jobs:
       - name: build
         run: |
           cd ./.github/workflows
-          docker-compose build ruby
+          docker compose build ruby
       - name: tests
         run: |
           cd ./.github/workflows
-          docker-compose run --rm ruby ./tests.sh
+          docker compose run --rm ruby ./tests.sh
