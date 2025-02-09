@@ -6,7 +6,7 @@ require 'json'
 class PingTest < Test::Unit::TestCase
 
   def setup
-    @server = Server.new 5001
+    @server = Server.new(5001, { "alive" => true })
     Thread.new { 
       @server.start 
     }
