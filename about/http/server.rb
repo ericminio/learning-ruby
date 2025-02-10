@@ -1,27 +1,26 @@
 require 'socket'
 
 class Server
+
+    attr_accessor :answer
     
     def initialize(port, answer)
-        @body = answer.to_json
+        @answer = answer
         @port = port
         @server = TCPServer.new port
-        puts 'Server created on port ' + @port.to_s
     end
-    def start
-        puts 'Server is listening...'
-        while session = @server.accept
-            request = session.gets
-            puts request
-
-            unless request.nil?
-                session.print "HTTP/1.1 200\r\n"
-                session.print "Content-Type: application/json\r\n"
-                session.print "Content-Length: " + @body.length.to_s + "\r\n"
-                session.print "\r\n"
-                session.print @body
-            end
-            session.close
+    
+    def listen_once
+        session = @server.accept
+        request = session.gets
+        unless request.nil?
+            session.print "HTTP/1.1 200\r\n"
+            session.print "Content-Type: application/json\r\n"
+            session.print "Content-Length: " + @answer.to_json.length.to_s + "\r\n"
+            session.print "\r\n"
+            session.print @answer.to_json
         end
+        session.close    
+        @server.close    
     end
 end
