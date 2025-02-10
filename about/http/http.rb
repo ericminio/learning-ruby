@@ -8,7 +8,7 @@ class PingTest < Test::Unit::TestCase
   def setup
     @server = Server.new(5001, ->(form) { {"alive" => true} } )
     @server_thread = Thread.new {  @server.listen_once }
-    @uri = URI('http://localhost:5001')
+    @uri = URI("http://localhost:#{@server.port}")
   end
 
   def teardown
