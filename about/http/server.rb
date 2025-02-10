@@ -2,12 +2,12 @@ require 'socket'
 
 class Server
 
+    attr_accessor :port
     attr_accessor :answer
     
     def initialize(port, answer)
         @answer = answer
-        @port = port
-        @server = TCPServer.new port
+        pick_port(port)
     end
     
     def listen_once
@@ -36,5 +36,17 @@ class Server
       end
       return unless content_length > 0
       socket.read(content_length)
+    end
+
+    def pick_port(port)
+        @server = 
+        begin
+            server = TCPServer.new port
+            @port = port
+            server
+        rescue Errno::EADDRINUSE
+            port += 1
+            retry
+        end
     end
 end
