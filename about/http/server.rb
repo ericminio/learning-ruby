@@ -8,7 +8,6 @@ class Server
     def initialize(port, answer)
         @answer = answer
         pick_port(port)
-        puts "Server running on port #{@port}"
     end
     
     def listen_once
@@ -41,7 +40,6 @@ class Server
     def pick_port(port)
         @server = 
         begin
-            puts "Trying port #{port}"
             server = TCPServer.new port
             @port = port
             server
