@@ -6,5 +6,5 @@ services:
     image: ruby:3.3.0
     container_name: ruby-3
     volumes:
-      - ../../about:/usr/src/ruby/about
-      - ../../tests.sh:/usr/src/ruby/tests.sh
+      - ../about:/usr/src/ruby/about
+      - ../tests.sh:/usr/src/ruby/tests.sh
