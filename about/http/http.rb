@@ -7,12 +7,7 @@ class PingTest < Test::Unit::TestCase
 
   def setup
     @server = Server.new(5001, ->(form) { {"alive" => true} } )
-    @server_thread = Thread.new {  @server.listen_once }
     @uri = URI("http://localhost:#{@server.port}")
-  end
-
-  def teardown
-    @server_thread.exit
   end
 
   def test_answer_set_at_initialization
@@ -31,11 +26,11 @@ class PingTest < Test::Unit::TestCase
   end
 
   def test_dynamic_answer
-    @server.answer = ->(form) { { incoming:form } }
+    @server.answer = ->(incoming) { { body:incoming.body } }
     response = Net::HTTP.post_form(@uri, 'one' => 1, 'two' => '2' )
     answer = JSON.parse(response.body)
 
-    assert_equal(answer, { "incoming" => "one=1&two=2" })
+    assert_equal(answer, { "body" => "one=1&two=2" })
   end
   
 end
