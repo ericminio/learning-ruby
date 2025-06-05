@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class FindTest < Test::Unit::TestCase
+class AnyTest < Test::Unit::TestCase
 
   def test_any_is_true_when_any_element_matches
     array = [1, 2, 3, 4, 5]
